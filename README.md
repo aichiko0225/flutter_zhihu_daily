@@ -1,6 +1,11 @@
 # flutter_zhihu_daily
 
-知乎日报
+知乎日报 flutter版
+
+一切都是从知乎日报开始
+现在flutter也是从知乎日报开始吧
+页面很简单，只是随手写的一个入门项目
+
 
 ## Getting Started
 
