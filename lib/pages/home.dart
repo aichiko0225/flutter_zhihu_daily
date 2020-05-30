@@ -11,6 +11,12 @@ class HomePage extends StatefulWidget {
 class _HomeState extends State<HomePage> {
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return CupertinoPageScaffold(
