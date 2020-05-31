@@ -64,8 +64,8 @@ class HttpManager {
 
     /// 暂时先去掉缓存机制，还没有时间了解
     ///Caches
-//    var cacheData = await CacheManager.get(url);
-//    var connectivityResult = await (Connectivity().checkConnectivity());
+  //  var cacheData = await CacheManager.get(url);
+  //  var connectivityResult = await (Connectivity().checkConnectivity());
 
     ///no network
 //    if (connectivityResult == ConnectivityResult.none) {

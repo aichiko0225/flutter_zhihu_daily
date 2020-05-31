@@ -14,7 +14,7 @@ description: 知乎日报
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.2.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -26,6 +26,7 @@ dependencies:
   dio: ^2.1.6
   objectdb: ^1.0.5
   json_annotation: ^2.0.0
+  flutter_swiper: ^1.1.6
 
 dev_dependencies:
   flutter_test:
