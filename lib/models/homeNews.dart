@@ -6,7 +6,7 @@ part 'homeNews.g.dart';
 @JsonSerializable()
 class HomeNews {
     HomeNews();
-    /// 日期
+
     String date;
     /// 当日新闻
     List<Stories> stories;

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_zhihu_daily/api/api.dart';
 import 'package:flutter_zhihu_daily/models/index.dart';
 import 'package:flutter_zhihu_daily/pages/widgets/banner.dart';
+import 'package:flutter_zhihu_daily/pages/widgets/storyCell.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -13,7 +14,6 @@ class HomePage extends StatefulWidget {
 
 class _HomeState extends State<HomePage> {
 
-  List<String> items = [];
   ScrollController _scrollController = ScrollController();
 
   List<TopStories> _topStoriesArray = [];
@@ -21,8 +21,8 @@ class _HomeState extends State<HomePage> {
   List<Stories> _storiesArray = [];
 
   int _itemCount() {
-    if (items != null) {
-      return items.length+1;
+    if (_storiesArray != null) {
+      return _storiesArray.length+1;
     }
     return 1;
   }
@@ -41,7 +41,7 @@ class _HomeState extends State<HomePage> {
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
-        middle: Text('title'),
+        middle: Text('知乎日报'),
       ),
       child: ListView.separated(
         controller: _scrollController,
@@ -69,13 +69,11 @@ class _HomeState extends State<HomePage> {
 
   Widget _buildBannerView() {
     var arr = _topStoriesArray.map((f) => f.image).toList();
-    return BannerView(images: arr);
+    return BannerView(storiesList: _topStoriesArray);
   }
 
   Widget _buildItemView(int index) {
-    return Container(
-      child: Text(items[index-1]),
-    );
+    return StoryCell(stories:_storiesArray[index-1]);
   }
 
   Future<void> _requestData() async {

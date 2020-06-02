@@ -19,3 +19,7 @@ class AppStrings {
   static const String UNKNOWN_ERROR = '未知错误';
   static const String NETWORK_CONNECT_ERROR = '网络连接错误';
 }
+
+class AppRoutes {
+  static const String news_content = 'news_content';
+}

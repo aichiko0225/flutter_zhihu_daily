@@ -1,13 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:flutter_zhihu_daily/config/gank_config.dart';
+import 'package:flutter_zhihu_daily/models/index.dart';
 
 class BannerView extends StatefulWidget {
 
-  final List<String> images;
+  final List<TopStories> storiesList;
 
   BannerView({
-    this.images,
+    this.storiesList,
   });
 
   @override
@@ -42,12 +44,13 @@ class _BannerState extends State<BannerView> {
       height: height,
       child: Swiper(
         itemBuilder: _swiperBuilder,
-        itemCount: widget.images.length,
+        itemCount: widget.storiesList.length,
         controller: _swiperController,
         scrollDirection: Axis.horizontal,
         autoplay: true,
         onTap: (index) {
           print('点击了第$index');
+          Navigator.pushNamed(context, AppRoutes.news_content);
         },
         pagination: SwiperPagination(
             alignment: Alignment.bottomRight,
@@ -62,9 +65,42 @@ class _BannerState extends State<BannerView> {
   }
 
   Widget _swiperBuilder(BuildContext context, int index) {
-    return Image.network(
-      (widget.images[index]),
-      fit: BoxFit.fill,
+    var images = widget.storiesList.map((f) => f.image).toList();
+    var title = widget.storiesList[index].title;
+    var author = widget.storiesList[index].hint;
+    return Stack(
+      children: <Widget>[
+        Image.network(
+          (images[index]),
+          fit: BoxFit.fill,
+        ),
+        Positioned(
+          left: 20,
+          bottom: 20,
+          right: 20,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(
+                title,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 5),
+                child: Text(
+                  author,
+                  style: TextStyle(
+                    color: Colors.white60
+                  ),
+                ),
+              )
+            ],
+          )
+        ),
+      ],
     );
   }
 }
