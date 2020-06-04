@@ -17,8 +17,12 @@ class RouteManager {
   }
 
   ///切换无参数页面
-  static pushNamed(BuildContext context, String routeName) {
-    Navigator.pushNamed(context, routeName);
+  static pushNamed(
+    BuildContext context,
+    String routeName, {
+    Object arguments,
+   }) {
+    Navigator.pushNamed(context, routeName, arguments: arguments);
   }
 
   ///主页

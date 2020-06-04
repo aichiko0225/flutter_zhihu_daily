@@ -16,7 +16,7 @@ class ZhihuApi {
     return response.data;
   }
 
-  static getNewsContentData(int id) async  {
+  static getNewsContentData(num id) async  {
     HttpResponse response = await HttpManager.instance.request(apiContent(id));
     return response.data;
   }

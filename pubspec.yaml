@@ -27,7 +27,10 @@ dependencies:
   objectdb: ^1.0.5
   json_annotation: ^2.0.0
   flutter_swiper: ^1.1.6
-
+  # flutter_webview_plugin: ^0.3.11
+  webview_flutter: ^0.3.18
+  path_provider: ^1.6.0
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter

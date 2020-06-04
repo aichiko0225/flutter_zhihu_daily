@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:flutter_zhihu_daily/commons/manager/routes_manager.dart';
 import 'package:flutter_zhihu_daily/config/gank_config.dart';
 import 'package:flutter_zhihu_daily/models/index.dart';
 
@@ -50,7 +51,12 @@ class _BannerState extends State<BannerView> {
         autoplay: true,
         onTap: (index) {
           print('点击了第$index');
-          Navigator.pushNamed(context, AppRoutes.news_content);
+          var s = widget.storiesList[index];
+          var arr = widget.storiesList.map((f) => f.id).toList();
+          RouteManager.pushNamed(context, AppRoutes.news_content, arguments: {
+            'stories': s,
+            'idArr': arr
+          });
         },
         pagination: SwiperPagination(
             alignment: Alignment.bottomRight,
@@ -85,7 +91,8 @@ class _BannerState extends State<BannerView> {
                 title,
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 20
+                  fontSize: 20,
+                  decoration: TextDecoration.none
                 ),
               ),
               Padding(
@@ -93,7 +100,9 @@ class _BannerState extends State<BannerView> {
                 child: Text(
                   author,
                   style: TextStyle(
-                    color: Colors.white60
+                    color: Colors.white60,
+                    decoration: TextDecoration.none,
+                    fontSize: 14
                   ),
                 ),
               )

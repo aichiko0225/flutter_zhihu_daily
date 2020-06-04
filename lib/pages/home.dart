@@ -33,7 +33,6 @@ class _HomeState extends State<HomePage> {
     _requestData();
     _scrollController.addListener(() {
       print(_scrollController.offset); //打印滚动位置
-      
     });
   }
 
