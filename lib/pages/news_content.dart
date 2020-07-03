@@ -17,7 +17,8 @@ class NewsContentPage extends StatefulWidget {
 
 class _ContentState extends State<NewsContentPage> {
   List<num> idArray;
-  TopStories stories;
+  TopStories topStories;
+  Stories stories;
 
   NewsContent _newsContent;
 
@@ -41,6 +42,7 @@ class _ContentState extends State<NewsContentPage> {
     var args = ModalRoute.of(context).settings.arguments as Map;
     idArray = args['idArr'];
     stories = args['stories'];
+    topStories = args['topStories'];
     height = MediaQuery.of(context).size.width;
     requestContentData();
     return CupertinoPageScaffold(
@@ -68,8 +70,9 @@ class _ContentState extends State<NewsContentPage> {
   }
 
   Widget _imageView() {
+    String image = _newsContent.image;
     return Image.network(
-      (stories.image),
+      (image),
       fit: BoxFit.fill,
     );
   }
@@ -110,14 +113,14 @@ class _ContentState extends State<NewsContentPage> {
     if (_newsContent != null) {
       return;
     }
-    var id = stories.id;
+    var id = _getIdString();
     var newsJson = await ZhihuApi.getNewsContentData(id);
     NewsContent content = NewsContent.fromJson(newsJson);
-    String htmlStr = _getHtmlString(content.css, content.body);
-    _writeDataFile(htmlStr, _fileName(content.id));
     setState(() {
       _newsContent = content;
     });
+    String htmlStr = _getHtmlString(content.css, content.body);
+    _writeDataFile(htmlStr, _fileName(content.id));
   }
 
   String _getHtmlString(List cssList, String body) {
@@ -150,9 +153,8 @@ class _ContentState extends State<NewsContentPage> {
     if (!body.contains('img-place-holder')) {
       return body;
     }
-    var image = stories.image;
+    var image = _getImageString();
     var img = '<img src="$image"/>';
-    // Match match = body.matchAsPrefix('"img-place-holder\">');
     var newBody;
     var strArr = body.split('<div class="img-place-holder">');
     if (strArr.isNotEmpty) {
@@ -194,4 +196,28 @@ class _ContentState extends State<NewsContentPage> {
     // 返回本地文件目录
     return File('$dir/app.css');
   }
+
+  num _getIdString() {
+    num id = 0;
+    if (topStories != null) {
+      return topStories.id;
+    }
+    if (stories != null) {
+      return stories.id;
+    }
+  }
+
+  String _getImageString() {
+    if (topStories != null) {
+      return topStories.image;
+    }
+    if (_newsContent != null) {
+      return _newsContent.image;
+    }
+    // if (stories != null) {
+    //   return stories.image_hue;
+    // }
+    return '';
+  }
+
 }

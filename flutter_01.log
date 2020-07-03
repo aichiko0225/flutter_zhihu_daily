@@ -1,0 +1,228 @@
+Flutter crash report; please file at https://github.com/flutter/flutter/issues.
+
+## command
+
+flutter version v1.12.13+hotfix.4
+
+## exception
+
+VersionCheckError: VersionCheckError: Command exited with code -9: git -c log.showSignature=false log -n 1 --pretty=format:%ad --date=iso
+Standard error: 
+
+```
+#0      _runSync (package:flutter_tools/src/version.dart:543:5)
+#1      FlutterVersion._latestGitCommitDate (package:flutter_tools/src/version.dart:143:12)
+#2      FlutterVersion.frameworkCommitDate (package:flutter_tools/src/version.dart:133:37)
+#3      FlutterVersion.toString (package:flutter_tools/src/version.dart:110:99)
+#4      VersionCommand.runCommand (package:flutter_tools/src/commands/version.dart:117:32)
+<asynchronous suspension>
+#5      FlutterCommand.verifyThenRunCommand (package:flutter_tools/src/runner/flutter_command.dart:615:18)
+<asynchronous suspension>
+#6      FlutterCommand.run.<anonymous closure> (package:flutter_tools/src/runner/flutter_command.dart:515:33)
+<asynchronous suspension>
+#7      AppContext.run.<anonymous closure> (package:flutter_tools/src/base/context.dart:146:29)
+#8      _rootRun (dart:async/zone.dart:1126:13)
+#9      _CustomZone.run (dart:async/zone.dart:1023:19)
+#10     _runZoned (dart:async/zone.dart:1518:10)
+#11     runZoned (dart:async/zone.dart:1465:12)
+#12     AppContext.run (package:flutter_tools/src/base/context.dart:145:18)
+#13     FlutterCommand.run (package:flutter_tools/src/runner/flutter_command.dart:505:20)
+#14     CommandRunner.runCommand (package:args/command_runner.dart:197:27)
+#15     FlutterCommandRunner.runCommand.<anonymous closure> (package:flutter_tools/src/runner/flutter_command_runner.dart:413:21)
+<asynchronous suspension>
+#16     AppContext.run.<anonymous closure> (package:flutter_tools/src/base/context.dart:146:29)
+#17     _rootRun (dart:async/zone.dart:1126:13)
+#18     _CustomZone.run (dart:async/zone.dart:1023:19)
+#19     _runZoned (dart:async/zone.dart:1518:10)
+#20     runZoned (dart:async/zone.dart:1465:12)
+#21     AppContext.run (package:flutter_tools/src/base/context.dart:145:18)
+#22     FlutterCommandRunner.runCommand (package:flutter_tools/src/runner/flutter_command_runner.dart:364:19)
+#23     CommandRunner.run.<anonymous closure> (package:args/command_runner.dart:112:25)
+#24     new Future.sync (dart:async/future.dart:224:31)
+#25     CommandRunner.run (package:args/command_runner.dart:112:14)
+#26     FlutterCommandRunner.run (package:flutter_tools/src/runner/flutter_command_runner.dart:250:18)
+#27     run.<anonymous closure>.<anonymous closure> (package:flutter_tools/runner.dart:63:22)
+#28     _rootRun (dart:async/zone.dart:1126:13)
+#29     _CustomZone.run (dart:async/zone.dart:1023:19)
+#30     _runZoned (dart:async/zone.dart:1518:10)
+#31     runZoned (dart:async/zone.dart:1502:12)
+#32     run.<anonymous closure> (package:flutter_tools/runner.dart:61:18)
+<asynchronous suspension>
+#33     AppContext.run.<anonymous closure> (package:flutter_tools/src/base/context.dart:146:29)
+#34     _rootRun (dart:async/zone.dart:1126:13)
+#35     _CustomZone.run (dart:async/zone.dart:1023:19)
+#36     _runZoned (dart:async/zone.dart:1518:10)
+#37     runZoned (dart:async/zone.dart:1465:12)
+#38     AppContext.run (package:flutter_tools/src/base/context.dart:145:18)
+#39     runInContext (package:flutter_tools/src/context_runner.dart:64:24)
+#40     run (package:flutter_tools/runner.dart:50:10)
+#41     main (package:flutter_tools/executable.dart:65:9)
+#42     main (file:///Users/ash/Library/flutter/packages/flutter_tools/bin/flutter_tools.dart:8:3)
+#43     _startIsolate.<anonymous closure> (dart:isolate-patch/isolate_patch.dart:305:32)
+#44     _RawReceivePortImpl._handleMessage (dart:isolate-patch/isolate_patch.dart:174:12)
+```
+
+## flutter doctor
+
+```
+1
+1
+1
+1
+[33m[!][39m Flutter (Channel unknown, v1.12.13, on Mac OS, locale zh-Hans-CN)
+    [32m•[39m Flutter version 1.12.13 at /Users/ash/Library/flutter
+    [31m✗[39m Command exited with code -9: git -c log.showSignature=false log -n 1 --pretty=format:%ad --date=iso
+      Standard error: 
+    [31m✗[39m Downloaded executables cannot execute on host.
+      See https://github.com/flutter/flutter/issues/6207 for more information
+
+
+[33m[!][39m Android toolchain - develop for Android devices (Android SDK version 29.0.3)
+    [32m•[39m Android SDK at /Users/ash/Library/Android/sdk
+    [32m•[39m Android NDK location not configured (optional; useful for native profiling support)
+    [32m•[39m Platform android-29, build-tools 29.0.3
+    [31m✗[39m No Java Development Kit (JDK) found; You must have the environment variable JAVA_HOME set and the java binary in your PATH. You can download the JDK from
+      https://www.oracle.com/technetwork/java/javase/downloads/.
+
+[31m[✗][39m Xcode - develop for iOS and macOS
+    [31m✗[39m Xcode installation is incomplete; a full installation is necessary for iOS development.
+      Download at: https://developer.apple.com/xcode/download/
+      Or install Xcode via the App Store.
+      Once installed, run:
+        sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer
+        sudo xcodebuild -runFirstLaunch
+    [31m✗[39m CocoaPods not installed.
+        CocoaPods is used to retrieve the iOS and macOS platform side's plugin code that responds to your plugin usage on the Dart side.
+        Without CocoaPods, plugins will not work on iOS or macOS.
+        For more info, see https://flutter.dev/platform-plugins
+      To install:
+        sudo gem install cocoapods
+
+[33m[!][39m Android Studio
+    [32m•[39m Android Studio at /Applications/Android Studio.app/Contents
+    [31m✗[39m Flutter plugin not installed; this adds Flutter specific functionality.
+    [31m✗[39m Dart plugin not installed; this adds Dart specific functionality.
+    [31m✗[39m Unable to determine bundled Java version.
+    [32m•[39m Try updating or re-installing Android Studio.
+
+[31m[☠][39m IntelliJ IDEA Ultimate Edition (the doctor check crashed)
+    [31m✗[39m Due to an error, the doctor check did not complete. If the error message below is not helpful, please let us know about this issue at
+      https://github.com/flutter/flutter/issues.
+    [31m✗[39m RangeError (index): Invalid value: Only valid value is 0: 1
+    [32m•[39m #0      List.[] (dart:core-patch/growable_array.dart:149:60)
+      #1      IntelliJValidatorOnMac.pluginsPath (package:flutter_tools/src/doctor.dart:838:31)
+      #2      IntelliJValidator.validate (package:flutter_tools/src/doctor.dart:677:53)
+      #3      asyncGuard.<anonymous closure> (package:flutter_tools/src/base/async_guard.dart:111:32)
+      #4      _rootRun (dart:async/zone.dart:1126:13)
+      #5      _CustomZone.run (dart:async/zone.dart:1023:19)
+      #6      _runZoned (dart:async/zone.dart:1518:10)
+      #7      runZoned (dart:async/zone.dart:1502:12)
+      #8      asyncGuard (package:flutter_tools/src/base/async_guard.dart:109:3)
+      #9      Doctor.startValidatorTasks (package:flutter_tools/src/doctor.dart:158:9)
+      #10     Doctor.diagnose (package:flutter_tools/src/doctor.dart:252:41)
+      #11     _AsyncAwaitCompleter.start (dart:async-patch/async_patch.dart:45:6)
+      #12     Doctor.diagnose (package:flutter_tools/src/doctor.dart:241:24)
+      #13     _doctorText.<anonymous closure> (package:flutter_tools/runner.dart:205:26)
+      #14     AppContext.run.<anonymous closure> (package:flutter_tools/src/base/context.dart:146:29)
+      #15     _AsyncAwaitCompleter.start (dart:async-patch/async_patch.dart:45:6)
+      #16     AppContext.run.<anonymous closure> (package:flutter_tools/src/base/context.dart:146:7)
+      #17     _rootRun (dart:async/zone.dart:1126:13)
+      #18     _CustomZone.run (dart:async/zone.dart:1023:19)
+      #19     _runZoned (dart:async/zone.dart:1518:10)
+      #20     runZoned (dart:async/zone.dart:1465:12)
+      #21     AppContext.run (package:flutter_tools/src/base/context.dart:145:18)
+      #22     _AsyncAwaitCompleter.start (dart:async-patch/async_patch.dart:45:6)
+      #23     AppContext.run (package:flutter_tools/src/base/context.dart:132:19)
+      #24     _doctorText (package:flutter_tools/runner.dart:204:19)
+      #25     _AsyncAwaitCompleter.start (dart:async-patch/async_patch.dart:45:6)
+      #26     _doctorText (package:flutter_tools/runner.dart:200:27)
+      #27     _createLocalCrashReport (package:flutter_tools/runner.dart:182:32)
+      #28     _AsyncAwaitCompleter.start (dart:async-patch/async_patch.dart:45:6)
+      #29     _createLocalCrashReport (package:flutter_tools/runner.dart:167:37)
+      #30     _handleToolError (package:flutter_tools/runner.dart:138:31)
+      #31     _asyncThenWrapperHelper.<anonymous closure> (dart:async-patch/async_patch.dart:73:64)
+      #32     _rootRunUnary (dart:async/zone.dart:1134:38)
+      #33     _CustomZone.runUnary (dart:async/zone.dart:1031:19)
+      #34     _FutureListener.handleValue (dart:async/future_impl.dart:139:18)
+      #35     Future._propagateToListeners.handleValueCallback (dart:async/future_impl.dart:680:45)
+      #36     Future._propagateToListeners (dart:async/future_impl.dart:709:32)
+      #37     Future._completeWithValue (dart:async/future_impl.dart:524:5)
+      #38     Future._asyncComplete.<anonymous closure> (dart:async/future_impl.dart:554:7)
+      #39     _rootRun (dart:async/zone.dart:1126:13)
+      #40     _CustomZone.run (dart:async/zone.dart:1023:19)
+      #41     _CustomZone.runGuarded (dart:async/zone.dart:925:7)
+      #42     _CustomZone.bindCallbackGuarded.<anonymous closure> (dart:async/zone.dart:965:23)
+      #43     _microtaskLoop (dart:async/schedule_microtask.dart:43:21)
+      #44     _startMicrotaskLoop (dart:async/schedule_microtask.dart:52:5)
+      #45     _runPendingImmediateCallback (dart:isolate-patch/isolate_patch.dart:118:13)
+      #46     _RawReceivePortImpl._handleMessage (dart:isolate-patch/isolate_patch.dart:175:5)
+
+
+[32m[✓][39m VS Code (version 1.46.1)
+    [32m•[39m VS Code at /Applications/Visual Studio Code.app/Contents
+    [32m•[39m Flutter extension version 3.12.1
+
+[33m[!][39m Proxy Configuration
+    [32m•[39m HTTP_PROXY is set
+    [33m![39m NO_PROXY is not set
+
+[31m[☠][39m Connected device (the doctor check crashed)
+    [31m✗[39m Due to an error, the doctor check did not complete. If the error message below is not helpful, please let us know about this issue at
+      https://github.com/flutter/flutter/issues.
+    [31m✗[39m Exception: Unable to run "adb", check your Android SDK installation and ANDROID_HOME environment variable:
+      /Users/ash/Library/Android/sdk/platform-tools/adb
+    [32m•[39m #0      throwToolExit (package:flutter_tools/src/base/common.dart:28:3)
+      #1      getAdbDevices (package:flutter_tools/src/android/android_device.dart:731:5)
+      #2      AndroidDevices.pollingGetDevices (package:flutter_tools/src/android/android_device.dart:65:53)
+      #3      PollingDeviceDiscovery.devices (package:flutter_tools/src/device.dart:285:52)
+      #4      DeviceManager.getAllConnectedDevices (package:flutter_tools/src/device.dart:140:46)
+      <asynchronous suspension>
+      #5      DeviceValidator.validate (package:flutter_tools/src/doctor.dart:851:54)
+      #6      asyncGuard.<anonymous closure> (package:flutter_tools/src/base/async_guard.dart:111:32)
+      #7      _rootRun (dart:async/zone.dart:1126:13)
+      #8      _CustomZone.run (dart:async/zone.dart:1023:19)
+      #9      _runZoned (dart:async/zone.dart:1518:10)
+      #10     runZoned (dart:async/zone.dart:1502:12)
+      #11     asyncGuard (package:flutter_tools/src/base/async_guard.dart:109:3)
+      #12     Doctor.startValidatorTasks (package:flutter_tools/src/doctor.dart:158:9)
+      #13     Doctor.diagnose (package:flutter_tools/src/doctor.dart:252:41)
+      #14     _AsyncAwaitCompleter.start (dart:async-patch/async_patch.dart:45:6)
+      #15     Doctor.diagnose (package:flutter_tools/src/doctor.dart:241:24)
+      #16     _doctorText.<anonymous closure> (package:flutter_tools/runner.dart:205:26)
+      #17     AppContext.run.<anonymous closure> (package:flutter_tools/src/base/context.dart:146:29)
+      #18     _AsyncAwaitCompleter.start (dart:async-patch/async_patch.dart:45:6)
+      #19     AppContext.run.<anonymous closure> (package:flutter_tools/src/base/context.dart:146:7)
+      #20     _rootRun (dart:async/zone.dart:1126:13)
+      #21     _CustomZone.run (dart:async/zone.dart:1023:19)
+      #22     _runZoned (dart:async/zone.dart:1518:10)
+      #23     runZoned (dart:async/zone.dart:1465:12)
+      #24     AppContext.run (package:flutter_tools/src/base/context.dart:145:18)
+      #25     _AsyncAwaitCompleter.start (dart:async-patch/async_patch.dart:45:6)
+      #26     AppContext.run (package:flutter_tools/src/base/context.dart:132:19)
+      #27     _doctorText (package:flutter_tools/runner.dart:204:19)
+      #28     _AsyncAwaitCompleter.start (dart:async-patch/async_patch.dart:45:6)
+      #29     _doctorText (package:flutter_tools/runner.dart:200:27)
+      #30     _createLocalCrashReport (package:flutter_tools/runner.dart:182:32)
+      #31     _AsyncAwaitCompleter.start (dart:async-patch/async_patch.dart:45:6)
+      #32     _createLocalCrashReport (package:flutter_tools/runner.dart:167:37)
+      #33     _handleToolError (package:flutter_tools/runner.dart:138:31)
+      #34     _asyncThenWrapperHelper.<anonymous closure> (dart:async-patch/async_patch.dart:73:64)
+      #35     _rootRunUnary (dart:async/zone.dart:1134:38)
+      #36     _CustomZone.runUnary (dart:async/zone.dart:1031:19)
+      #37     _FutureListener.handleValue (dart:async/future_impl.dart:139:18)
+      #38     Future._propagateToListeners.handleValueCallback (dart:async/future_impl.dart:680:45)
+      #39     Future._propagateToListeners (dart:async/future_impl.dart:709:32)
+      #40     Future._completeWithValue (dart:async/future_impl.dart:524:5)
+      #41     Future._asyncComplete.<anonymous closure> (dart:async/future_impl.dart:554:7)
+      #42     _rootRun (dart:async/zone.dart:1126:13)
+      #43     _CustomZone.run (dart:async/zone.dart:1023:19)
+      #44     _CustomZone.runGuarded (dart:async/zone.dart:925:7)
+      #45     _CustomZone.bindCallbackGuarded.<anonymous closure> (dart:async/zone.dart:965:23)
+      #46     _microtaskLoop (dart:async/schedule_microtask.dart:43:21)
+      #47     _startMicrotaskLoop (dart:async/schedule_microtask.dart:52:5)
+      #48     _runPendingImmediateCallback (dart:isolate-patch/isolate_patch.dart:118:13)
+      #49     _RawReceivePortImpl._handleMessage (dart:isolate-patch/isolate_patch.dart:175:5)
+
+
+[33m![39m Doctor found issues in 7 categories.
+```

@@ -54,7 +54,7 @@ class _BannerState extends State<BannerView> {
           var s = widget.storiesList[index];
           var arr = widget.storiesList.map((f) => f.id).toList();
           RouteManager.pushNamed(context, AppRoutes.news_content, arguments: {
-            'stories': s,
+            'topStories': s,
             'idArr': arr
           });
         },

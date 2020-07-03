@@ -1,4 +1,7 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_zhihu_daily/commons/manager/routes_manager.dart';
+import 'package:flutter_zhihu_daily/config/gank_config.dart';
 import 'package:flutter_zhihu_daily/models/index.dart';
 
 class StoryCell extends StatefulWidget {
@@ -23,19 +26,27 @@ class _StoryCellState extends State<StoryCell> {
     var title = widget.stories.title;
     var author = widget.stories.hint;
     var imageUrl = widget.stories.images.first;
-    return Container(
-      height: cellHeight,
-      color: Colors.white,
-      child: Stack(
-        children: <Widget>[
-          _buildTextWidget(title, author),
-          Positioned(
-            right: 20,
-            top: 15,
-            child: _buildImageWidget(imageUrl)
-          )
-        ],
+    return GestureDetector(
+      child: Container(
+        height: cellHeight,
+        color: Colors.white,
+        child: Stack(
+          children: <Widget>[
+            _buildTextWidget(title, author),
+            Positioned(
+              right: 20,
+              top: 15,
+              child: _buildImageWidget(imageUrl)
+            )
+          ],
+        ),
       ),
+      onTap: () {
+        var s = widget.stories;
+        RouteManager.pushNamed(context, AppRoutes.news_content, arguments: {
+          'stories': s,
+        });
+      },
     );
   }
 
