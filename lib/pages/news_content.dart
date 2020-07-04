@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_zhihu_daily/api/api.dart';
 import 'package:flutter_zhihu_daily/models/index.dart';
+import 'package:flutter_zhihu_daily/pages/widgets/toolbar.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -27,6 +28,9 @@ class _ContentState extends State<NewsContentPage> {
   String _webUrl = '';
 
   double height = 200;
+
+  // ignore: non_constant_identifier_names
+  double toolbar_height = 50;
 
   final Completer<WebViewController> _controller =
       Completer<WebViewController>();
@@ -53,16 +57,16 @@ class _ContentState extends State<NewsContentPage> {
             Positioned(
               left: 0,
               right: 0,
-              bottom: 44,
-              top: -44,
+              bottom: toolbar_height,
+              top: -toolbar_height,
               child: _webview(),
             ),
             Positioned(
               left: 0,
               right: 0,
               bottom: 0,
-              height: 44,
-              child: Container(color: Colors.red),
+              height: toolbar_height,
+              child: ToolBar(id: _getIdString(),),
             )
           ],
         ),
